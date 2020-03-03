@@ -7,33 +7,51 @@ package Car;
 
 public class Car {
 
-private String name;
-private String color;
-private int speedMax;
+    private String name;
+    private String color;
+    private int speedMax;
 
 
-public Car (String name, String color, int speedMax){
+    public Car(String name, String color, int speedMax) {
 
-    this.name = name;
-    this.color = color;
-    this.speedMax = speedMax;
+        this.name = name;
+        this.color = color;
+        this.speedMax = speedMax;
     }
 
+    public String getName() {
+        return name;
+    }
 
-    public boolean equals() {
+    public String getColor() {
+        return color;
+    }
 
-        if (speedMax > 100) {
-            return true;
-        } else {
-            return false;
-        }
+    public int getSpeedMax() {
+        return speedMax;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public void setColor(String color) {
+        this.color = color;
+    }
+
+    public void setSpeedMax(int speedMax) {
+        this.speedMax = speedMax;
+    }
+
+    public boolean equals(Object obj) {
+
+        return name == obj.name && color == obj.color && speedMax == obj.speedMax;
     }
 
     public String toString() {
 
-    System.out.println ("Марка машины: " + name + ", " + "Цвет машины: " + color + ", " + "Максимальная скорость: " + speedMax);
+        return "Марка машины: " + name + ", " + "Цвет машины: " + color + ", " + "Максимальная скорость: " + speedMax;
 
-        return super.toString();
     }
 }
 

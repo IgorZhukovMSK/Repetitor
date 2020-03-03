@@ -14,7 +14,6 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.HashMap;
-import java.util.Iterator;
 import java.util.Map;
 
 public class Dictionary {
@@ -38,17 +37,16 @@ public class Dictionary {
         BufferedReader brStr2 = new BufferedReader(new InputStreamReader(System.in));
         String str3 = brStr2.readLine();
 
-        Iterator<Map.Entry<String, String>> iterator = hashMap.entrySet().iterator();
-        while (iterator.hasNext()) {
-            Map.Entry<String, String> pair = iterator.next();
-            String key = pair.getKey();
-            String value = pair.getValue();
-
-            if (str3.equals(key)) {
-                System.out.println(value);
-
-            }
-        }
+//        for (Map.Entry <String, String> pair : hashMap) {
+//            String key = pair.getKey();
+//            String value = pair.getValue();
+//
+//            if (str3.equals(key)) {
+//                System.out.println(value);
+//                break;
+//            }
+//        }
     }
 }
+
 
