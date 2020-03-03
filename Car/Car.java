@@ -43,10 +43,17 @@ public class Car {
         this.speedMax = speedMax;
     }
 
+<<<<<<< HEAD
 //    public boolean equals(Object obj) {
 //
 //        return name == obj.name && color == obj.color && speedMax == obj.speedMax;
 //    }
+=======
+    public boolean equals(Object obj) {
+
+        return name == obj.name && color == obj.color && speedMax == obj.speedMax;
+    }
+>>>>>>> 7df27fe1a2dbb25aeb4df2e91bbf8d518cdca1df
 
     public String toString() {
 
