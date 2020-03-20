@@ -4,6 +4,8 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.Set;
 
 public class Main {
 
@@ -20,7 +22,12 @@ public class Main {
                   }
             }
 
-            System.out.println(new Dublicate().Dublicate(array));
+
+            Set set = new HashSet();
+            set.addAll(array);
+
+             System.out.println(set);
+
 
 
       }
