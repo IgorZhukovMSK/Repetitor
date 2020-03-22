@@ -1,7 +1,10 @@
 package Str;
 
     /*
-    В методе маин у нас вводится текст и вводиться слово
+    Задание:
+     Вам дана произвольная строка. Создать метод, который для любого слова будет выводить частоту его встречаемости в этой строке.
+
+
 
     текст для проверки
     Еще с раннего утра всё небо обложили дождевые тучи; было тихо, не жарко и скучно, как бывает в серые пасмурные дни, когда над полем давно уже нависли тучи,
@@ -18,11 +21,14 @@ public class Main {
 
     public static void main(String[] args) throws IOException {
 
+
+        //static void printCountWord () {
+
         BufferedReader brText = new BufferedReader(new InputStreamReader(System.in));
         String strText = brText.readLine();
-
         BufferedReader brWord = new BufferedReader(new InputStreamReader(System.in));
         String strWord = brWord.readLine();
+
 
         List<String> arrText = new ArrayList<>();
 
@@ -35,16 +41,21 @@ public class Main {
             arrText.add(parts[i]);
         }
 
-          int count = 0;
+        int count = 0;
 
-            for (String text : arrText) {
+        for (String text : arrText) {
 
-                if (strWord.toLowerCase().equals(text)) {
-                    count++;
+            if (strWord.toLowerCase().equals(text)) {
+                count++;
 
-                }
             }
-            System.out.print("Слово " + strWord + " встречается " + count + " раз");
         }
+
+        System.out.print("Слово " + strWord + " встречается " + count + " раз");
     }
+}
+
+
+
+
 
