@@ -20,25 +20,33 @@ package Shop;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Map;
 import java.util.TreeMap;
 
 public class Shop {
 
-   public static void main(String[] args) throws IOException {
 
-       TreeMap<String, TreeMap<String, Integer>> buyer = new TreeMap<String, TreeMap<String, Integer>>();
+    public static void main(String[] args) {
+        TreeMap<String, TreeMap<String, Integer>> userData = new TreeMap<>();
 
-       BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        try {
+            userData = readData(userData);
+        }
+        catch (IOException ex) {
+            System.out.println("Wrong data " + ex.getMessage());
+        }
 
-        for (; ; ) {
+        List<String> result = countResult(userData);
+        print(result);
+    }
 
-            String str = br.readLine();
+    public static TreeMap<String, TreeMap<String, Integer>> readData(TreeMap<String, TreeMap<String, Integer>> userData) throws IOException {
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 
-            if (str.equals("exit")) {
-
-                break;
-            }
+        String str = br.readLine();
+        while (!str.equals("exit")) {
 
             String[] parts = str.split(" ");
 
@@ -46,35 +54,51 @@ public class Shop {
             String goods = parts[1];
             Integer amount = Integer.parseInt(parts[2]);
 
-            if (!buyer.containsKey(name))
-                buyer.put(name, new TreeMap<String, Integer>());
+            if (!userData.containsKey(name))
+                userData.put(name, new TreeMap<>());
 
-                TreeMap<String, Integer> temp = buyer.get(name);
+            TreeMap<String, Integer> temp = userData.get(name);
 
-                if (!temp.containsKey(goods))
-                    temp.put(goods, 0);
+            if (!temp.containsKey(goods))
+                temp.put(goods, 0);
 
-                Integer tempAmount = temp.get(goods);
+            Integer tempAmount = temp.get(goods);
 
-                temp.put(goods, tempAmount + amount);
-            }
+            temp.put(goods, tempAmount + amount);
 
-            for (Map.Entry<String, TreeMap<String, Integer>> entry : buyer.entrySet()) {
-
-                String key = entry.getKey();
-                TreeMap<String, Integer> value = entry.getValue();
-
-                System.out.println(key + ":");
-
-                for (Map.Entry<String, Integer> product : value.entrySet()) {
-                    String keyGoods = product.getKey();
-                    Integer valueAmont = product.getValue();
-
-                    System.out.println(keyGoods + " " + valueAmont);
-                }
-            }
+            str = br.readLine();
         }
+
+        return userData;
     }
 
+    public static List<String> countResult(TreeMap<String, TreeMap<String, Integer>> userData) {
+        List<String> commonResult = new ArrayList<>();
+
+        for (Map.Entry<String, TreeMap<String, Integer>> entry : userData.entrySet()) {
+
+            String key = entry.getKey();
+            TreeMap<String, Integer> value = entry.getValue();
+
+            StringBuilder result = new StringBuilder(key + ": ");
+
+            for (Map.Entry<String, Integer> product : value.entrySet()) {
+                String keyGoods = product.getKey();
+                Integer valueAmont = product.getValue();
+
+                result.append(String.format("%s %d\n", keyGoods, valueAmont));
+            }
+
+            commonResult.add(result.toString());
+        }
+
+        return commonResult;
+    }
+
+    public static void print(List<String> result) {
+                   System.out.println(result);
+        }
+    }
+//}
 
 
